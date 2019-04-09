@@ -1,0 +1,90 @@
+{
+  "version": "1.0",
+  "session": {
+    "new": false,
+    "sessionId": "amzn1.echo-api.session.aab079dd-eb91-4344-999f-be7d10d0c74f",
+    "application": {
+      "applicationId": "amzn1.ask.skill.ccdbeee6-68c1-4bcb-b731-4d5f1657d485"
+    },
+    "user": {
+      "userId": "amzn1.ask.account.AHG4GBRXJM5GCTMYX6ZZUTSTRDQREBASUPYWDPNCQ3ROGYI2XW6I5CMHFGDE7UTR7U6BH7I2ZAKEAPVTHK4GAETL6G36XUDLWZTOAUGIXCQKG5I5PL6OYC7PPLGWOJLL5RHP7554X77OUVFJDMDLWRIEXKLTUXT6SERCA2BKBPAPBDOXAIBNXXTGEBL5FWOQF2ITQNPRCDI7KXQ"
+    }
+  },
+  "context": {
+    "System": {
+      "application": {
+        "applicationId": "amzn1.ask.skill.ccdbeee6-68c1-4bcb-b731-4d5f1657d485"
+      },
+      "user": {
+        "userId": "amzn1.ask.account.AHG4GBRXJM5GCTMYX6ZZUTSTRDQREBASUPYWDPNCQ3ROGYI2XW6I5CMHFGDE7UTR7U6BH7I2ZAKEAPVTHK4GAETL6G36XUDLWZTOAUGIXCQKG5I5PL6OYC7PPLGWOJLL5RHP7554X77OUVFJDMDLWRIEXKLTUXT6SERCA2BKBPAPBDOXAIBNXXTGEBL5FWOQF2ITQNPRCDI7KXQ"
+      },
+      "device": {
+        "deviceId": "amzn1.ask.device.AGLAB64SCGVTA6LGV7OVHQR4IFLOBNLK4LQTIWQCSEGV34CLYMS2MPWBKDB5F42ZKA4EFOXWCK7JEHLEIQ2Q7236TG7QGCIA3QC2CL2HHLFEE6MJKQB3ZT3WALHS5KDQK56WIECSMFWRYTPN6RZIXC6LZKVWOR7FWWM5R4ZMC5YKBOWDBQMSW",
+        "supportedInterfaces": {}
+      },
+      "apiEndpoint": "https://api.amazonalexa.com",
+      "apiAccessToken": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6IjEifQ.eyJhdWQiOiJodHRwczovL2FwaS5hbWF6b25hbGV4YS5jb20iLCJpc3MiOiJBbGV4YVNraWxsS2l0Iiwic3ViIjoiYW16bjEuYXNrLnNraWxsLmNjZGJlZWU2LTY4YzEtNGJjYi1iNzMxLTRkNWYxNjU3ZDQ4NSIsImV4cCI6MTU1NDcwOTkzNSwiaWF0IjoxNTU0NzA5NjM1LCJuYmYiOjE1NTQ3MDk2MzUsInByaXZhdGVDbGFpbXMiOnsiY29uc2VudFRva2VuIjpudWxsLCJkZXZpY2VJZCI6ImFtem4xLmFzay5kZXZpY2UuQUdMQUI2NFNDR1ZUQTZMR1Y3T1ZIUVI0SUZMT0JOTEs0TFFUSVdRQ1NFR1YzNENMWU1TMk1QV0JLREI1RjQyWktBNEVGT1hXQ0s3SkVITEVJUTJRNzIzNlRHN1FHQ0lBM1FDMkNMMkhITEZFRTZNSktRQjNaVDNXQUxIUzVLRFFLNTZXSUVDU01GV1JZVFBONlJaSVhDNkxaS1ZXT1I3RldXTTVSNFpNQzVZS0JPV0RCUU1TVyIsInVzZXJJZCI6ImFtem4xLmFzay5hY2NvdW50LkFIRzRHQlJYSk01R0NUTVlYNlpaVVRTVFJEUVJFQkFTVVBZV0RQTkNRM1JPR1lJMlhXNkk1Q01IRkdERTdVVFI3VTZCSDdJMlpBS0VBUFZUSEs0R0FFVEw2RzM2WFVETFdaVE9BVUdJWENRS0c1STVQTDZPWUM3UFBMR1dPSkxMNVJIUDc1NTRYNzdPVVZGSkRNRExXUklFWEtMVFVYVDZTRVJDQTJCS0JQQVBCRE9YQUlCTlhYVEdFQkw1RldPUUYySVRRTlBSQ0RJN0tYUSJ9fQ.QvRn3lDKTxJkkTgcfQ5K3I6TaxmGhYXumDGTuly4eFOAiaBmX9uFBK1X7V0ArfDm-WXDOuqMo4IXBGBrYi6RWe_xXpg_WYA6q6JOg8cbP2YUF3jHPEVEjZs7xptMiXFWGOfbk4dIvxnLy7k_T3A-ujHXhWkpDwvsQ8yowPrW_lEnqXYzkgAjBkbDQ0JVOWrN1kVLPq9K1f4QVqfLIf6extQE-rG7W0gQWRvVk8ut0nENe3Z6avo3wkvYNj81Dx8bhNXzJqaI5OnjI6xtxUNvgYvrxBrJH_une7gH0bMRfsWBNQEaKvOlHTC4v1tmqea8YFzA-_QP4Zs2om6K4UIG_g"
+    },
+    "Viewport": {
+      "experiences": [
+        {
+          "arcMinuteWidth": 246,
+          "arcMinuteHeight": 144,
+          "canRotate": false,
+          "canResize": false
+        }
+      ],
+      "shape": "RECTANGLE",
+      "pixelWidth": 1024,
+      "pixelHeight": 600,
+      "dpi": 160,
+      "currentPixelWidth": 1024,
+      "currentPixelHeight": 600,
+      "touch": [
+        "SINGLE"
+      ]
+    }
+  },
+  "request": {
+    "type": "IntentRequest",
+    "requestId": "amzn1.echo-api.request.49e82e9c-3304-4aeb-93e2-35377a496066",
+    "timestamp": "2019-04-08T07:47:15Z",
+    "locale": "en-US",
+    "intent": {
+      "name": "GetBusScheduleIntent",
+      "confirmationStatus": "NONE",
+      "slots": {
+        "Time": {
+          "name": "Time",
+          "confirmationStatus": "NONE",
+          "source": "USER"
+        },
+        "vehicle": {
+          "name": "vehicle",
+          "value": "shuttle",
+          "resolutions": {
+            "resolutionsPerAuthority": [
+              {
+                "authority": "amzn1.er-authority.echo-sdk.amzn1.ask.skill.ccdbeee6-68c1-4bcb-b731-4d5f1657d485.vehicle",
+                "status": {
+                  "code": "ER_SUCCESS_MATCH"
+                },
+                "values": [
+                  {
+                    "value": {
+                      "name": "bus",
+                      "id": "d20f83ee6933aa1ea047fe5cbd9c1fd5"
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          "confirmationStatus": "NONE",
+          "source": "USER"
+        }
+      }
+    },
+    "dialogState": "COMPLETED"
+  }
+}
