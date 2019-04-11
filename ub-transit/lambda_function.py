@@ -12,6 +12,10 @@ from datetime import datetime, timedelta, timezone
 import time
 import numpy as np
 
+#globals
+
+
+
 #---------------------shuttle code----------------------
 
 def get_shuttle_schedule():
@@ -95,7 +99,7 @@ def get_welcome_response():
 
     session_attributes = {}
     card_title = "Welcome"
-    speech_output = "Hi! Would you like me to get the bus or the shuttle schedule for you?"
+    speech_output = "Hi! Would you like me to get the bus or the shuttle schedule?"
     # If the user either does not reply to the welcome message or says something
     # that is not understood, they will be prompted again with this text.
     reprompt_text = "Please say either bus or shuttle."
@@ -119,12 +123,17 @@ def create_favorite_color_attributes(favorite_color):
 def set_vehicle(vehicle):
     return {"vehicle": vehicle}
 
-def get_bus(intent, session):
+def get_transit(intent, session):
 
     card_title = intent['name']
     session_attributes = {}
     should_end_session = False
     speech_output = ""
+    location = None
+
+    if 'location' in intent['slots']:
+        location = intent['slots']['location']['value']
+
     if 'vehicle' in intent['slots']:
         vehicle = intent['slots']['vehicle']['value']
         session_attributes = set_vehicle(vehicle)
@@ -140,7 +149,7 @@ def get_bus(intent, session):
                 if t > local:
                     next_arrival = t.astype(str)[11:13] + ":" + t.astype(str)[14:16]
                     break
-        speech_output =  "The " + vehicle.capitalize() + " arrival time for Creekside Village after the time specified is " + next_arrival
+        speech_output =  "The " + vehicle + " arrival time for " + location + " is " + next_arrival
         reprompt_text = "Could you state either bus or shuttle one more time?"
     else:
         speech_output = "Please try again."
@@ -200,8 +209,8 @@ def on_intent(intent_request, session):
     intent_name = intent_request['intent']['name']
 
     # Dispatch to your skill's intent handlers
-    if intent_name == "GetBusScheduleIntent":
-        return get_bus(intent, session)
+    if intent_name == "GetScheduleIntent":
+        return get_transit(intent, session)
     elif intent_name == "WhatsMyColorIntent":
         return get_color_from_session(intent, session)
     elif intent_name == "AMAZON.HelpIntent":
@@ -250,4 +259,3 @@ def lambda_handler(event, context):
         return on_intent(event['request'], event['session'])
     elif event['request']['type'] == "SessionEndedRequest":
         return on_session_ended(event['request'], event['session'])
-
