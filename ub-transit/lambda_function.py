@@ -12,11 +12,14 @@ from datetime import datetime, timedelta, timezone
 import time
 import numpy as np
 
-#globals
+location_index = {
+    'creekside': 0,
+    'creekside village': 0,
+    'moody terrace': 1
+}
 
+# ---------------------shuttle code----------------------
 
-
-#---------------------shuttle code----------------------
 
 def get_shuttle_schedule():
     today = datetime.now()
@@ -25,7 +28,7 @@ def get_shuttle_schedule():
     month = today.month
     date = today.day
     np.set_printoptions(threshold=np.inf)
-    data = np.zeros((77, 18), dtype = 'datetime64[s]')
+    data = np.zeros((77, 18), dtype='datetime64[s]')
     start = datetime(year, month, date, 6, 30)
     increments = [0, 5, 5, 2, 2, 1, 5, 1, 1, 8, 5, 2, 1, 2, 1, 2, 2, 3]
     inc = True
@@ -33,18 +36,18 @@ def get_shuttle_schedule():
     def next_row(start):
         nonlocal inc
         if start < datetime(year, month, date, 7, 19):
-            return start + timedelta(minutes = 25)
+            return start + timedelta(minutes=25)
         elif start > datetime(year, month, date, 21, 54):
             if start < datetime(year, month, date, 22, 19):
-                return start + timedelta(minutes = 25)
+                return start + timedelta(minutes=25)
             else:
                 return start + timedelta(minutes=50)
         elif inc:
             inc = False
-            return start + timedelta(minutes = 12)
+            return start + timedelta(minutes=12)
         elif not inc:
             inc = True
-            return start + timedelta(minutes = 13)
+            return start + timedelta(minutes=13)
         else:
             raise Exception('this time is not being handled yet')
 
@@ -53,13 +56,14 @@ def get_shuttle_schedule():
         for j, increment in enumerate(increments):
             if start.hour == 0 and start.minute == 50 and j == 9:
                 break
-            t = (t + timedelta(minutes = increment))
+            t = (t + timedelta(minutes=increment))
             data[i, j] = datetime(year, month, date, t.hour, t.minute)
         start = next_row(start)
     return data
-#------------------------------------------------------
+# ------------------------------------------------------
 
 # --------------- Helpers that build all of the responses ----------------------
+
 
 def build_speechlet_response(title, output, reprompt_text, should_end_session):
     return {
@@ -120,8 +124,10 @@ def handle_session_end_request():
 def create_favorite_color_attributes(favorite_color):
     return {"favoriteColor": favorite_color}
 
+
 def set_vehicle(vehicle):
     return {"vehicle": vehicle}
+
 
 def get_transit(intent, session):
 
@@ -132,6 +138,7 @@ def get_transit(intent, session):
     location = None
 
     if 'location' in intent['slots']:
+
         location = intent['slots']['location']['value']
 
     if 'vehicle' in intent['slots']:
@@ -139,21 +146,27 @@ def get_transit(intent, session):
         session_attributes = set_vehicle(vehicle)
         next_arrival = ""
         local = (np.datetime64(datetime.now()) + np.timedelta64(-4, 'h'))
+        print(local)
         if vehicle == "bus":
             pass
         else:
             schedule = get_shuttle_schedule()
-            for t in schedule.T[0]:
-                #speech_output += (t.astype(str)[11:13] + ":" + t.astype(str)[14:16] + "      " + local.astype(str)[11:13] + ":" + local.astype(str)[14:16])
+            try:
+                for t in schedule.T[location_index[location]]:
+                    if t > local:
+                        next_arrival = t.astype(
+                            str)[11:13] + ":" + t.astype(str)[14:16]
+                        break
+                speech_output = "Current time: " + str(local) + "The " + vehicle + " arrival time for " + \
+                    location + " is " + next_arrival
+                reprompt_text = "Could you state either bus or shuttle one more time?"
+            except KeyError:
+                reprompt_text = "Please choose a valid location."
 
-                if t > local:
-                    next_arrival = t.astype(str)[11:13] + ":" + t.astype(str)[14:16]
-                    break
-        speech_output =  "The " + vehicle + " arrival time for " + location + " is " + next_arrival
-        reprompt_text = "Could you state either bus or shuttle one more time?"
     else:
         speech_output = "Please try again."
         reprompt_text = "Please try again, by saying bus or shuttle."
+    print(speech_output)
     return build_response(session_attributes, build_speechlet_response(
         card_title, speech_output, reprompt_text, should_end_session))
 
